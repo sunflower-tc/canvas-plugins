@@ -1,0 +1,39 @@
+{
+  "name": "bae-nodejs",
+  "version": "1.0.0",
+  "author": "bae",
+  "description": "The first bae nodejs app!",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "wechat": "2.0.1",
+    "wechat-api": "1.11.0",
+    "wechat-oauth": "1.1.0",
+    "express": "4.13.3",
+    "body-parser": "*",
+    "connect-timeout": "*",
+    "express-session": "*",
+    "cookie-parser": "*",
+    "cookie-session": "*",
+    "connect-redis": "*",
+    "csurf": "*",
+    "morgan": "*",
+    "redis": "*",
+    "hiredis": "*",
+    "q": "*",
+    "mysql": "*",
+    "uuid": "*",
+    "blueimp-file-upload-node": "*",
+    "formidable": "*",
+    "node-static": "*",
+    "imagemagick": "*",
+    "ejs": "*",
+    "underscore": "*",
+    "dateformat": "*",
+    "canvas": "*",
+    "html": "*",
+    "urllib": "*"
+  },
+  "main": "app.js"
+}

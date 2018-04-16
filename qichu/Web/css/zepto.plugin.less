@@ -1,0 +1,60 @@
+@import "mixins/mixins";
+
+.plugin {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 50px;
+  left: 50px;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 11;
+  .img {
+    height: 100%;
+    line-height: 150px;
+    text-align: center;
+    img {
+      vertical-align: middle;
+      display: inline;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 auto;
+    }
+  }
+  &.focus {
+    border: 2px solid #ffffff;
+    z-index: 10;
+    .control {
+      display: block;
+    }
+  }
+  .control {
+    width: 30px;
+    position: absolute;
+    display: none;
+    img {
+      width: 100%;
+    }
+  }
+  .remove {
+    bottom: -10px;
+    left: -10px;
+  }
+  .resize {
+    top: -10px;
+    right: -10px;
+  }
+  .shun {
+    bottom: -10px;
+    right: -10px;
+  }
+  .ni {
+    top: -10px;
+    left: -10px;
+  }
+}
+
+.rotate-10 {
+  transform: rotate(30deg);
+  -wekit-transform: rotate(40deg)
+}

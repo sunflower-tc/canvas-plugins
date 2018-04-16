@@ -1,0 +1,57 @@
+.plugin {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 50px;
+  left: 50px;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 11;
+}
+.plugin .img {
+  height: 100%;
+  line-height: 150px;
+  text-align: center;
+}
+.plugin .img img {
+  vertical-align: middle;
+  display: inline;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+.plugin.focus {
+  border: 2px solid #ffffff;
+  z-index: 10;
+}
+.plugin.focus .control {
+  display: block;
+}
+.plugin .control {
+  width: 30px;
+  position: absolute;
+  display: none;
+}
+.plugin .control img {
+  width: 100%;
+}
+.plugin .remove {
+  bottom: -10px;
+  left: -10px;
+}
+.plugin .resize {
+  top: -10px;
+  right: -10px;
+}
+.plugin .shun {
+  bottom: -10px;
+  right: -10px;
+}
+.plugin .ni {
+  top: -10px;
+  left: -10px;
+}
+.rotate-10 {
+  transform: rotate(30deg);
+  -wekit-transform: rotate(40deg);
+}

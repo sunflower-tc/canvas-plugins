@@ -1,0 +1,3 @@
+{
+    less: ["Web/css/index.less", "Web/css/zepto.plugin.less"]
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%= resource%>"/>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="stylesheet" href="css/myreset.min.css"/>
+    <title>启初 听宝宝的话</title>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: #73c8cb;
+        }
+
+        .btn {
+            position: absolute;
+            width: 37.96%;
+            top: 59.67%;
+            right: 50%;
+        }
+
+        .btn .normal {
+            display: block;
+        }
+
+        .btn .click {
+            display: none;
+        }
+
+        .btn:active .normal {
+            display: none;
+        }
+
+        .btn:active .click {
+            display: block;
+        }
+
+        .music {
+            position: absolute;
+            width: 20px;
+            bottom: 30px;
+            left: 33.27%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="img-area" style="position: relative">
+    <img style="width: 100%;height: 100%;" src="<%= img_url%>" alt=""/>
+
+    <div id="yinfu" class="music">
+        <img style="width: 100%;" src="images/yinfu.gif" alt=""/>
+    </div>
+</div>
+
+<div id="btn-area" style="position:fixed;z-index: 1000;width: 100%;bottom: 0">
+    <img style="width: 100%;" src="images/share/btn-area.jpg" alt=""/>
+
+    <div class="btn">
+        <img class="normal" style="width: 100%;" src="images/share/get-play.png" alt=""/>
+        <img class="click" style="width: 100%;" src="images/share/get-play2.png" alt=""/>
+    </div>
+</div>
+
+<audio id="audio" src="<%=music%>"></audio>
+
+
+<script src="js/zepto.js"></script>
+<script src="js/touch-0.2.14.min.js"></script>
+<script src="js/base.js"></script>
+<!--script src="js/jweixin-1.0.0.js"></script-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/wx.min.js"></script>
+<script src="js/wx-check.js"></script>
+<!--script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script-->
+<script src="js/howler.min.js"></script>
+<!--script src="js/weixin.js"></script-->
+<script>
+    SM_TRACK.DEBUG = false;
+    var apt = {
+        title: '宝宝你想闹哪样？', // 分享标题
+        desc: "哄娃秘诀在这里！聪明的妈妈都已经点开啦~", // 分享描述
+        //link: "http://qichugiving.weixinzjit.com/Index/share?id=" + data.id, // 分享链接
+        imgUrl: "http://qichugiving.weixinzjit.com/images/share2.jpg", // 分享图标
+        success: function () {
+            alert("分享成功");
+        },
+        cancel: function () {
+        }
+    };
+    SM_TRACK.setAppMessage(apt);
+    var opt = {
+        title: "宝宝你想闹哪样？", // 分享标题
+        desc: "哄娃秘诀在这里！聪明的妈妈都已经点开啦~", // 分享描述
+        //link: "http://qichugiving.weixinzjit.com/Index/share?id=" + data.id, // 分享链接
+        imgUrl: "http://qichugiving.weixinzjit.com/images/share2.jpg", // 分享图标
+        success: function () {
+            alert("分享成功");
+        },
+        cancel: function () {
+        }
+    };
+    SM_TRACK.setTimeLine(opt);
+</script>
+<script>
+    var music = '<%=music%>';
+    var playFlag = false;
+    var sound = new Howl({
+        urls: [music],
+        onplay: function () {
+            $("#yinfu").show();
+            playFlag = true;
+        },
+        onend: function () {
+            $("#yinfu").hide();
+            playFlag = false;
+        }
+    });
+    $("#audio").on("ended", function () {
+        $("#yinfu").hide();
+    });
+    $("#audio")[0].play();
+    $("#yinfu").show();
+    //    if (browser.versions.android) {
+    //        $("#audio")[0].play();
+    //        $("#yinfu").show();
+    //    } else {
+    //        if (!playFlag) {
+    //
+    //            sound.play();
+    //        }
+    //    }
+
+    $("#img-area").on("click", function () {
+        $("#audio")[0].play();
+        $("#yinfu").show();
+//        if (browser.versions.android) {
+//            $("#audio")[0].play();
+//            $("#yinfu").show();
+//        } else {
+//            sound.play();
+//        }
+    });
+
+
+    $(".btn").on("touchend", function () {
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9aeefcca98bc48c0&redirect_uri=http%3A%2F%2Fpage.socialmaster.com.cn%2Fwx%2Fsns%2Ftrack%2Fwx9aeefcca98bc48c0&response_type=code&scope=snsapi_base&state=256.001.k-001";
+    });
+
+    var s_height = $(window).height();
+    var img = new Image();
+    img.src = "/images/share/btn-area.jpg";
+    img.onload = function () {
+        var b_height = $("#btn-area").height();
+        $("#img-area").height(s_height - b_height);
+    };
+
+    setInterval(function () {
+        $("#yinfu img").attr("src", "images/yinfu.gif");
+    }, 2 * 1000);
+
+
+</script>
+
+</body>
+</html>
